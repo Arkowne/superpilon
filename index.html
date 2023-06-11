@@ -1,15 +1,19 @@
-<!DOCTYPE html>
-<html>
 <head>
-    <title>Modifier un exemplaire</title>
+  <title>Enregistrement du texte</title>
+  <script>
+    function enregistrerTexte() {
+      // Récupérer le texte saisi
+      var texte = document.getElementById("zoneTexte").value;
+
+      // Redirection vers le fichier PHP avec le texte en tant que paramètre GET
+      window.location.href = "enregistrer.php?texte=" + encodeURIComponent(texte);
+    }
+  </script>
 </head>
 <body>
-    <h1>Modifier un exemplaire</h1>
-    <form action="traitement.php" method="POST">
-        <label for="numero">Numéro de livre :</label>
-        <input type="text" id="numero" name="numero" required>
-        <br><br>
-        <input type="submit" value="Modifier">
-    </form>
+  <h1>Enregistrement du texte</h1>
+  <textarea id="zoneTexte" rows="4" cols="50"></textarea>
+  <br>
+  <button onclick="enregistrerTexte()">Envoyer</button>
 </body>
 </html>
